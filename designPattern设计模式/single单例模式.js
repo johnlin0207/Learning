@@ -1,3 +1,5 @@
+// 一个类仅有一个实例，并提供一个全局访问它的访问点
+
 // 利用闭包存储初始化后的实例
 var createSingle = (function(){
     let instance = null;
