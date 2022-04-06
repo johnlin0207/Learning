@@ -12,17 +12,26 @@
  */
 var deleteDuplicates = function(head) {
   // debugger
-  if(!head || !head.next){
+  if(!head){
     return head
   }
-  if(head.val === head.next.val){
-    head.next = head.next.next;
-    deleteDuplicates(head)
-  } else {
-    if(head.next.val === null){
-      head.next = null;
+  // if(head.val === head.next.val){
+  //   head.next = head.next.next;
+  //   deleteDuplicates(head)
+  // } else {
+  //   if(head.next.val === null){
+  //     head.next = null;
+  //   }
+  //   deleteDuplicates(head.next)
+  // }
+  // cur是个游标
+  let cur = head;
+  while(cur.next){
+    if(cur.val === cur.next.val){
+      cur.next = cur.next.next;
+    } else { 
+      cur = cur.next
     }
-    deleteDuplicates(head.next)
   }
   return head;
 };
