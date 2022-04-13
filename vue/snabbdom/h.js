@@ -1,3 +1,4 @@
+// h函数把vdom变为vnode
 // vdom {tagName, props{}, text|children}
 import vNode from './vnode'
 export default function(tagName, data, child){
