@@ -1,51 +1,54 @@
-// console.log("start");
-// setTimeout(() => {
-//   console.log("timer1");
-//   Promise.resolve().then(function () {
-//     console.log("promise1");
-//   });
-// }, 0);
-// setTimeout(() => {
-//   console.log("timer2");
-//   Promise.resolve().then(function () {
-//     console.log("promise2");
-//   });
-// }, 0);
-// Promise.resolve().then(function () {
-//   console.log("promise3");
-// });
-// console.log("end");
-
-new Promise((resolve, reject) => {
-  console.log(1);
-  resolve();
-})
-  .then(() => {
-    console.log(2);
-    new Promise((resolve, reject) => {
-      console.log(3);
-      setTimeout(() => {
-        reject();
-      }, 3 * 1000);
-      resolve();
-    })
-      .then(() => {
-        console.log(4);
-        new Promise((resolve, reject) => {
-          console.log(5);
-          resolve();
-        })
-          .then(() => {
-            console.log(7);
-          })
-          .then(() => {
-            console.log(9);
+class Event {
+    
+  constructor(){
+      this.events = {};
+  }
+  
+  on(name, fn){
+      if(!this.events[name]){
+          this.events[name] = [fn];
+      } else {
+          this.events[name].push(fn)
+      }
+  }
+  
+  emit(name, data){
+      const eventArr = this.events[name];
+      if(Array.isArray(eventArr)){
+          eventArr.forEach(fn => {
+              fn(data);
           });
-      })
-      .then(() => {
-        console.log(8);
-      });
-  })
-  .then(() => {
-    console.log(6);
-  });
+      }
+  }
+  
+  once(name, fn){
+    const that = this;
+      // 只执行一次后不再执行
+      function onceFn(...args){
+        fn.apply(this, args);
+        that.off(name);
+      }
+      this.on(name, onceFn)
+  }
+  off(name, fn){
+      if(this.events[name]){
+          delete this.events[name]
+      }
+  }
+}
+var e = new Event();
+e.on('a', function(){
+  console.log(123)
+})
+e.on('b', function(){
+  console.log(456)
+})
+
+e.once('c', function(){
+  console.log(789)
+})
+e.emit('c')
+e.emit('c')
+// e.emit('a')
+// e.off('b')
+// e.emit('b')
