@@ -2,7 +2,7 @@
 // 如下 调用举例
 
 function fetch(data){
-  const delay = Math.random() * 6000
+  const delay = 1000;
   return new Promise((rs, rj) => {
     setTimeout(() => {
       rs(data);
@@ -16,7 +16,7 @@ class MyQueue {
     this.nowTaskNumInQueue = 1;
     this.tempData = null;
     this.taskQueue = [];
-    this.delayExec = this.throttle(this.exec);
+    this.exec();
   }
 
   add(data){
@@ -27,19 +27,7 @@ class MyQueue {
   then(cb){
     this.taskQueue.push({data: this.tempData, cb});
     this.tempData = null;
-    this.delayExec();
-  }
-
-  throttle(fn){
-    let timer = null;
-    return function(...data){
-      if(!timer){
-        timer = setTimeout(() => {
-          fn.apply(this, data);
-          clearTimeout(timer);
-        }, 0)
-      }
-    }
+    this.exec();
   }
 
   exec(){
@@ -59,7 +47,7 @@ class MyQueue {
   }
 }
 
-let myQueue = new MyQueue(3); 
+let myQueue = new MyQueue(5);
 for (let i = 0; i < 10; i++) { 
     myQueue.add(`消息${i + 1}`).then((data) => { 
         console.log(`${data}发送成功`)
