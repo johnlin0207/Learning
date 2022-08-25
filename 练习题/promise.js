@@ -1,4 +1,4 @@
-var _Promise = function(callback){
+var _Promise = function (callback) {
   this.status = 'PENDING';
   this.data = null;
   this.successFnQuene = [];
@@ -16,11 +16,11 @@ var _Promise = function(callback){
   callback(resolve, reject);
 }
 
-_Promise.prototype.then = function(successFn, errorFn){
-  if(this.status === 'PENDING'){
+_Promise.prototype.then = function (successFn, errorFn) {
+  if (this.status === 'PENDING') {
     this.successFnQuene.push(successFn);
     this.errorFnQuene.push(errorFn);
-  } else if(this.status === 'FULFILLED'){
+  } else if (this.status === 'FULFILLED') {
     this.successFnQuene.forEach(callback => {
       callback(this.data)
     })
