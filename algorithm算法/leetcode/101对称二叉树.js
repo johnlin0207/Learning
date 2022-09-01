@@ -12,13 +12,6 @@ function TreeNode(val, left, right) {
  */
 function isSymmetric(root) {
 
-  function compare(root) {
-    if (!root) {
-      return false
-    }
-    return equal(root.left, root.right)
-  }
-
   function equal(leftNode, rightNode) {
     // 对于本轮对比的两个元素作比对
     if (leftNode === null && rightNode === null) {
@@ -34,7 +27,11 @@ function isSymmetric(root) {
     return equal(leftNode.left, rightNode.right) && equal(leftNode.right, rightNode.left)
   }
 
-  return compare(root)
+  if (!root) {
+    return false
+  }
+
+  return equal(root.left, root.right)
 }
 
 var r = isSymmetric(new TreeNode(1, new TreeNode(2, null, new TreeNode(4)), new TreeNode(2, null, new TreeNode(4))));
