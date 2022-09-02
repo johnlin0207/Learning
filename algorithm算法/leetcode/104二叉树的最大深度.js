@@ -13,9 +13,9 @@ var maxDepth = function (root) {
   if (!root) {
     return 0
   }
-  var left = maxDepth(root.left);
-  var right = maxDepth(root.right);
-  return Math.max(left, right) + 1
+  const leftDepth = maxDepth(root.left);
+  const rightDepth = maxDepth(root.right);
+  return Math.max(leftDepth, rightDepth) + 1
 };
 
 var r = maxDepth(new TreeNode(1, new TreeNode(2, new TreeNode(4), new TreeNode(5)), new TreeNode(3, null, new TreeNode(7, null, new TreeNode(8)))));

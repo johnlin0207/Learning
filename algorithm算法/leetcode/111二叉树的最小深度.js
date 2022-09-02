@@ -15,17 +15,18 @@ var minDepth = function (root) {
   if (!root) {
     return 0
   }
-  if (root.left === null && root.right === null) {
-    return 1
+  let leftDepth = minDepth(root.left);
+  let rightDepth = minDepth(root.right);
+
+  // 当一个左子树为空，右不为空，这时并不是最低点，+1后继续递归
+  if(root.left === null && root.right !== null){
+    return rightDepth + 1
   }
-  var ans = Number.MAX_SAFE_INTEGER;
-  if (root.left !== null) {
-    ans = Math.min(minDepth(root.left), ans)
+  // 当一个右子树为空，左不为空，这时并不是最低点，+1后继续递归
+  if(root.right === null && root.left !== null){
+    return leftDepth + 1
   }
-  if (root.right !== null) {
-    ans = Math.min(minDepth(root.right), ans)
-  }
-  return ans + 1
+  return Math.min(leftDepth, rightDepth) + 1
 };
 
 var r = minDepth({
@@ -34,7 +35,7 @@ var r = minDepth({
   right: {val: 20, left: {val: 15, left: null, right: null}, right: {val: 7, left: null, right: null}}
 });
 
-// console.log(r);
+console.log(r);
 
 
 /**
@@ -67,4 +68,4 @@ var minDepth2 = function (root) {
 
 var r2 = minDepth2(new TreeNode(1, new TreeNode(2, new TreeNode(4), new TreeNode(5)), new TreeNode(3, null, new TreeNode(7, null, new TreeNode(8)))));
 
-console.log(r2);
+// console.log(r2);
