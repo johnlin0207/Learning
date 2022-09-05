@@ -5,7 +5,7 @@ function TreeNode(val, left, right) {
 }
 
 /**
- * method1:递归法
+ * method1:递归法，后序遍历
  * @param {TreeNode} root
  * @return {number}
  */
@@ -20,8 +20,41 @@ var maxDepth = function (root) {
 
 var r = maxDepth(new TreeNode(1, new TreeNode(2, new TreeNode(4), new TreeNode(5)), new TreeNode(3, null, new TreeNode(7, null, new TreeNode(8)))));
 
-console.log(r);
+// console.log(r);
 
+
+/**
+ * 递归法，前序遍历，回溯法
+ * @param root
+ * @param depth
+ */
+var maxDepth3 = function (root) {
+  if(!root){ return 0 }
+  let maxDepth = 0, depth = 1;
+  const depthFn = (node) => {
+    // 中
+    maxDepth = Math.max(maxDepth, depth);
+    if(node.left){
+      depth ++;
+      // 左
+      depthFn(node.left);
+      depth --;
+    }
+
+    if(node.right){
+      depth ++;
+      // 右
+      depthFn(node.right);
+      depth --;
+    }
+  };
+  depthFn(root);
+  return maxDepth;
+};
+
+var r3 = maxDepth3(new TreeNode(1, new TreeNode(2, new TreeNode(4), new TreeNode(5)), new TreeNode(3, null, new TreeNode(7, null, new TreeNode(8)))));
+
+console.log(r3);
 
 /**
  * method2:使用层迭代方式计算最大深度
@@ -50,4 +83,4 @@ var maxDepth2 = function (root) {
 
 var r2 = maxDepth2(new TreeNode(1, new TreeNode(2, new TreeNode(4), new TreeNode(5)), new TreeNode(3, null, new TreeNode(7, null, new TreeNode(8)))));
 
-console.log(r2);
+// console.log(r2);

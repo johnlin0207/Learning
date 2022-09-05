@@ -36,4 +36,45 @@ var r = height({
     right: {val: 7, lefty: null, right: null}
   }
 });
-console.log(r);
+// console.log(r);
+
+
+
+function TreeNode(val, left, right) {
+  this.val = (val === undefined ? 0 : val);
+  this.left = (left === undefined ? null : left);
+  this.right = (right === undefined ? null : right);
+}
+
+/**
+ * @return number
+ * @param node
+ */
+const depth = (node) => {
+  if(!node){ return 0 }
+  return Math.max(depth(node.left), depth(node.right)) + 1
+};
+
+var isBalanced2 = function(root){
+  if(!root){ return true }
+  // 计算左右子节点的深度
+  return isBalanced2(root.left) && isBalanced2(root.right) && (Math.abs(depth(root.left) - depth(root.right)) <= 1)
+};
+
+const r2 = isBalanced2(new TreeNode(1, new TreeNode(2, new TreeNode(4)), new TreeNode(3)));
+console.log(r2);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
