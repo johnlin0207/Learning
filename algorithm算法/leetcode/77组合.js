@@ -14,7 +14,7 @@ var loop = (startIndex, n, k) => {
     result.push([...path]);
     return
   }
-  for (let i = startIndex; i <= n; i++) {
+  for (let i = startIndex; i <= n - (k - path.length) + 1; i++) {
     path.push(i);
     loop(i + 1, n , k);
     path.pop();
@@ -28,6 +28,5 @@ var combine = function(n, k) {
   return result;
 };
 
-
-var r = combine(1, 1);
+var r = combine(4, 4);
 console.log(r);
