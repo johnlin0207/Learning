@@ -4,11 +4,11 @@
  * @return {number}
  */
 var climbStairs = function(n) {
-  let list = [1, 2];
+  let dp = [1, 2];
   for (let i = 2; i <= n; i++) {
-    list[i] = list[i-1] + list[i-2]
+    dp[i] = dp[i-1] + dp[i-2]
   }
-  return list[n-1]
+  return dp[n-1]
 };
 
 var r = climbStairs(5);
@@ -21,16 +21,16 @@ var r = climbStairs(5);
  * @returns {number}
  */
 var climbStairs2 = function(n, m) {
-  let list = [1, 2];
+  let dp = [1, 2];
   for (let i = 2; i <= n; i++) {
-    list[i] = 0;
+    dp[i] = 0;
     for (let j = 1; j <= m; j++) {
       if(i>=j){
-        list[i] += list[i-j]
+        dp[i] += dp[i-j]
       }
     }
   }
-  return list[n-1]
+  return dp[n-1]
 };
 
 var r2 = climbStairs2(5, 1);
