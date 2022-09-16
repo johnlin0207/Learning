@@ -44,19 +44,20 @@ var r2 = maxSubArray2([-2, -1]);
 
 /**
  * 动态规划
- *
+ * 时间复杂度O(n)，空间复杂度O(n)
  * @param nums
  * @returns {number}
  */
 var maxSubArray3 = function(nums) {
   if(nums.length === 0){ return 0 }
+  // dp为保存当前推导出的状态数组
   let dp = [nums[0]];
   let max = dp[0];
   for (let i = 1; i < nums.length; i++) {
-    dp[i] = Math.max(dp[i - 1] + nums[i], nums[i]);
+    dp[i] = Math.max(dp[i - 1] + nums[i], nums[i]); //递推公式
     max = Math.max(dp[i], max);
   }
-  console.log(dp)
+  return max
   };
 var r3 = maxSubArray3([-2, -1, 1, -2, 5]);
 console.log(r3);
