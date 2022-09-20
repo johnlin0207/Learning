@@ -28,7 +28,7 @@ var loop = (k, n, startIndex = 1, sum = 0) => {
     return result
 }
 
-var combinationSum3 = function(k, n, startIndex = 1, sum = 0) {
+var combinationSum3 = function(k, n) {
     result = [];
     return loop(k, n)
 };
