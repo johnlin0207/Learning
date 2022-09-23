@@ -4,10 +4,8 @@
  * @return {string[][]}
  */
 const partition = function(s: string) {
-    let result: Array<object>;
-    let path: Array<string>;
-    result = [];
-    path = [];
+    let result: Array<object> = [];
+    let path: Array<string> = [];
     let len: number = s.length;
 
     const isPalindrome = (str: string) => {
@@ -44,5 +42,6 @@ const partition = function(s: string) {
     return result;
 };
 
+// @ts-ignore
 const r = partition("a");
 console.log(r);
