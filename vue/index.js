@@ -13,6 +13,8 @@ const vnode2 = h('ol', {}, [
   h('li', {}, 'c')
 ]);
 
+console.log(vnode1);
+
 const container = document.getElementById('container');
 patch(container, vnode1)
 

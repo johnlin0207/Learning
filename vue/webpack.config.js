@@ -1,9 +1,12 @@
 const path = require('path');
+const webpack = require('webpack');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
   mode: "development", // "production" | "development" | "none"
   // Chosen mode tells webpack to use its built-in optimizations accordingly.
   entry: "./index.js", // string | object | array
+  devtool: "source-map",
   // 默认为 ./src
   // 这里应用程序开始执行
   // webpack 开始打包
@@ -20,6 +23,14 @@ module.exports = {
     static: path.join(__dirname, 'public'), // boolean | string | array | object, static file location
     compress: true, // enable gzip compression
     hot: true, // hot module replacement. Depends on HotModuleReplacementPlugin
-    port: 9000
-  }
+    port: 9000,
+    open: true
+  },
+  plugins: [
+    new webpack.HotModuleReplacementPlugin(),
+    new HtmlWebpackPlugin({
+      template: path.join(__dirname, './public/index.html'),
+      filename: 'index.html'
+    })
+  ]
 }

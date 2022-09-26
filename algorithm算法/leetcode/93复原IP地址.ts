@@ -10,7 +10,7 @@ var restoreIpAddresses = function(s: string) {
     let result: Array<string> = [];
 
     const check = (str: string) => {
-        // 只要有一个字符不是数字
+        // 排除只要有一个字符不是数字
         if(/[^\d]+$/.test(str)){
             return false
         }
@@ -18,15 +18,12 @@ var restoreIpAddresses = function(s: string) {
         if(/^0\d+?/.test(str)){
             return false
         }
-
-        // 只要数值大于255
+        // 排除数值大于255
         if(Number(str) > 255){
             return false
         }
-
         return true
     }
-
 
     const loop = (startIndex: number) => {
         if(path.length === 4 && pathLength === s.length){

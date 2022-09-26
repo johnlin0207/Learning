@@ -7,49 +7,51 @@
   <title>Document</title>
 </head>
 <body>
+<h1>hello</h1>
+
+<script src="/assets/index.js"></script>
   <!-- <h1>hello world!</h1>
   <button id="btn">patch</button>
   <div id="container"></div> -->
-  <div id="app">
-    <h2>{{person.name}} -- {{person.age}}</h2>
-    <h3>{{person.fav}}</h3>
-    <ul>
-      <li>1</li>
-      <li>2</li>
-      <li>3</li>
-    </ul>
-    <h3>{{msg}}</h3>
-    <div v-text="msg"></div>
-    <div v-text="person.name"></div>
-    <div v-html="htmlStr"></div>
-    <input type="text" v-model="msg">
-    <button v-on:click="handleClick">click on</button>
-    <button @click="handleClick2">click@</button>
-  </div>
-  <script src="../js/MVue.js"></script>
-  <script src="../js/Observer.js"></script>
-  <script>
-    let vm = new MVue({
-      el: '#app',
-      data: {
-        person: {
-          name: '小狗',
-          age: 2,
-          fav: '骨头'
-        },
-        msg: '学习mvvm原理',
-        htmlStr: '<h1>hello world</h1>'
-      },
-      methods: {
-        handleClick: function(){
-          this.person.name = '变的是{{name}}中定义的变量';
-        },
-        handleClick2: function(){
-          this.person.fav = '变的是{{fav}}中定义的变量';
-        }
-      }
-    })
-
-  </script>
+<!--  <div id="app">-->
+<!--    <h2>{{person.name}} &#45;&#45; {{person.age}}</h2>-->
+<!--    <h3>{{person.fav}}</h3>-->
+<!--    <ul>-->
+<!--      <li>1</li>-->
+<!--      <li>2</li>-->
+<!--      <li>3</li>-->
+<!--    </ul>-->
+<!--    <h3>{{msg}}</h3>-->
+<!--    <div v-text="msg"></div>-->
+<!--    <div v-text="person.name"></div>-->
+<!--    <div v-html="htmlStr"></div>-->
+<!--    <input type="text" v-model="msg">-->
+<!--    <button v-on:click="handleClick">click on</button>-->
+<!--    <button @click="handleClick2">click@</button>-->
+<!--  </div>-->
+<!--  <script src="../js/MVue.js"></script>-->
+<!--  <script src="../js/Observer.js"></script>-->
+<!--  <script>-->
+<!--    let vm = new MVue({-->
+<!--      el: '#app',-->
+<!--      data: {-->
+<!--        person: {-->
+<!--          name: '小狗',-->
+<!--          age: 2,-->
+<!--          fav: '骨头'-->
+<!--        },-->
+<!--        msg: '学习mvvm原理',-->
+<!--        htmlStr: '<h1>hello world</h1>'-->
+<!--      },-->
+<!--      methods: {-->
+<!--        handleClick: function(){-->
+<!--          this.person.name = '变的是{{name}}中定义的变量';-->
+<!--        },-->
+<!--        handleClick2: function(){-->
+<!--          this.person.fav = '变的是{{fav}}中定义的变量';-->
+<!--        }-->
+<!--      }-->
+<!--    })-->
+<!--  </script>-->
 </body>
 </html>

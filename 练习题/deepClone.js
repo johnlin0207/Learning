@@ -1,9 +1,10 @@
 //使用Map函数
 function deepCopy(obj, map = new Map()) {
-  if (typeof obj !== 'object') {
+  if (typeof obj !== 'object' || obj === null) {
     return obj
   }
-  var newObj = Array.isArray(obj) ? [] : {};
+
+  const newObj = Array.isArray(obj) ? [] : {};
 
   // map记录所有不重名的属性用于处理循环引用
   if (map.get(obj)) {
